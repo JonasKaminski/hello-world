@@ -11,6 +11,9 @@ class Test_Git:
         self.level  =   1
         self.config = {}
 
+        if 'test' in kwargs and isinstance(kwargs['test'], bool):
+            self.set_test(kwargs['test'])
+
         for key in kwargs:
             self.config[key]     = kwargs[key]
 
@@ -18,6 +21,11 @@ class Test_Git:
     def print_kwargs(self,**kwargs):
         for key in kwargs:
             print("key = {0}, value = {1}".format(key, kwargs[key]))
+
+
+    def set_test(self,val):
+
+        self.test   =   val
 
         
 class Foo:
@@ -30,9 +38,9 @@ class Foo:
 
 
 if __name__=='__main__':
-    os.chdir('C:\Users\JKaminski\OneDrive\Internship DLR\Git practice\Test_repository')
+    #os.chdir('C:\Users\JKaminski\OneDrive\Internship DLR\Git practice\Test_repository')
 
 
     from Test_Git import Test_Git
-    obj = Test_Git(config1 = 'test', config2 = 'test2')
+    obj = Test_Git(config1 = 'test', config2 = 'test2', test = True)
     obj.print_kwargs(a="two", b=1)
